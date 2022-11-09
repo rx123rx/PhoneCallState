@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:phone_state_i/phone_state_i.dart';
@@ -21,21 +20,19 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  final String title;
+  final String? title;
 
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  StreamSubscription streamSubscription;
+  late StreamSubscription streamSubscription;
 
   @override
   Widget build(BuildContext context) {
-
     print('setstate');
     return new Scaffold(
       appBar: new AppBar(
@@ -46,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             new Text('A:'),
-            new FlatButton(
+            new TextButton(
                 onPressed: () {
                   setState(() {
                     print('refresh');
@@ -64,13 +61,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void dispose() {
     super.dispose();
     streamSubscription.cancel();
-
   }
 
   @override
   void initState() {
     super.initState();
-    streamSubscription = phoneStateCallEvent.listen((PhoneStateCallEvent event) {
+    streamSubscription =
+        phoneStateCallEvent.listen((PhoneStateCallEvent event) {
       print('Call is Incoming or Connected' + event.stateC);
       //event.stateC has values "true" or "false"
     });

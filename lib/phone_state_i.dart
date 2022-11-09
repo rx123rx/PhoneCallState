@@ -19,7 +19,7 @@ class PhoneStateCallEvent{
 
 
 
-Stream<PhoneStateCallEvent> _phoneStateCallEvent;
+Stream<PhoneStateCallEvent>? _phoneStateCallEvent;
 
 PhoneStateCallEvent _listphoneStateCallEvent(String stateD){
   return new PhoneStateCallEvent(stateD);
@@ -34,5 +34,5 @@ Stream<PhoneStateCallEvent> get phoneStateCallEvent {
         .map(
             (dynamic event) => _listphoneStateCallEvent(event));
   }
-  return _phoneStateCallEvent;
+  return _phoneStateCallEvent!;
 }
